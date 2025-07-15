@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f7f9fc;
+            background-color: #f4f6f9;
             padding: 40px;
         }
         h1, h2 {
@@ -97,22 +97,20 @@
     </table>
 </div>
 
-<!-- JavaScript for Chart -->
+<!-- Chart JavaScript -->
 <script>
-    const complaintData = {
-        labels: {{ labels|safe }},
-        data: {{ data|safe }}
-    };
+    const labels = JSON.parse('{{ labels|safe|escapejs }}');
+    const data = JSON.parse('{{ data|safe|escapejs }}');
 
     const ctx = document.getElementById('complaintChart');
     if (ctx) {
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: complaintData.labels,
+                labels: labels,
                 datasets: [{
                     label: 'Complaints Count',
-                    data: complaintData.data,
+                    data: data,
                     backgroundColor: 'rgba(0, 123, 255, 0.5)',
                     borderColor: 'rgba(0, 123, 255, 1)',
                     borderWidth: 1,
@@ -132,7 +130,7 @@
                     x: {
                         title: {
                             display: true,
-                            text: 'Categories'
+                            text: 'Category'
                         }
                     }
                 }

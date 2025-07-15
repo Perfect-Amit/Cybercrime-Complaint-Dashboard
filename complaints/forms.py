@@ -4,4 +4,4 @@ from .models import Complaint
 class ComplaintForm(forms.ModelForm):
     class Meta:
         model = Complaint
-        fields = ['name', 'email', 'category', 'description']
+        fields = '__all__'

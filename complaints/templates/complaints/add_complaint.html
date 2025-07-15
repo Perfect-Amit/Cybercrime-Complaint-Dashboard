@@ -1,24 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>File a Cybercrime Complaint</title>
+    <title>Add Complaint</title>
     <link rel="stylesheet" href="{% static 'complaints/style.css' %}">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f7f9;
+            background-color: #f5f7fa;
             padding: 40px;
         }
         h1 {
             text-align: center;
-            color: #333;
         }
         form {
-            background: #fff;
             max-width: 600px;
             margin: 0 auto;
-            padding: 30px;
+            background: white;
+            padding: 25px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
@@ -27,47 +27,49 @@
             margin-top: 15px;
             font-weight: bold;
         }
-        input, select, textarea {
+        input, textarea, select {
             width: 100%;
-            padding: 12px;
-            margin-top: 8px;
-            border-radius: 5px;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 6px;
             border: 1px solid #ccc;
         }
         button {
-            margin-top: 25px;
+            margin-top: 20px;
+            padding: 12px;
             width: 100%;
             background-color: #007bff;
             color: white;
             border: none;
-            padding: 14px;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 6px;
+            font-size: 16px;
         }
         button:hover {
             background-color: #0056b3;
         }
         .back-link {
-            display: block;
             text-align: center;
             margin-top: 20px;
+        }
+        .back-link a {
+            color: #007bff;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-    <h1>File a Cybercrime Complaint</h1>
+<h1>File a Cybercrime Complaint</h1>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Complaint</button>
+</form>
 
-        <button type="submit">Submit Complaint</button>
-    </form>
-
-    <div class="back-link">
-        <a href="{% url 'dashboard' %}">← Back to Dashboard</a>
-    </div>
+<div class="back-link">
+    <a href="{% url 'dashboard' %}">&larr; Back to Dashboard</a>
+</div>
 
 </body>
 </html>

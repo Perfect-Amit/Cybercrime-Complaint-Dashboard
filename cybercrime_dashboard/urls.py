@@ -3,5 +3,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('complaints.urls')),  # Routes all main URLs to the complaints app
+    path('', include('complaints.urls')),
 ]
